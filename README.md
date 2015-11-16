@@ -14,7 +14,7 @@ The purpose is to show the basic usage of:
 * [AngularJS][3] for building CRUD-based Single Page Applications in JavaScript
 * and [Docker][4] for distributing the whole stack
 
-[1]: https://falcon.readthedocs.org/
+[1]: http://falconframework.org
 [2]: https://github.com/svanoort/pyresttest
 [3]: https://www.angularjs.org
 [4]: https://www.docker.com
