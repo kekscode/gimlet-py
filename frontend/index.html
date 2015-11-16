@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- AngularJS - https://code.angularjs.org/1.4.0/ -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+    <!-- Our AngularJS App -->
+    <script src="app/app.js"></script>
+    <script src="app/controllers.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+
+    <title>Gimlet Blog</title>
+</head>
+<body>
+<noscript>
+    <h2>Sorry, but this site does not work if JavaScript is disabled in your browser.</h2>
+</noscript>
+
+<!-- Fixed navbar -->
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="./">
+            </a>
+            <ul class="nav navbar-nav">
+                <li><a href="#/faq">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- BEGIN AngularJS templates -->
+    <div ng-view></div>
+    <!-- /END AngularJS templates -->
+
+</div>
+<!-- /container -->
+</body>
+<script>console.log('AngularJS', angular);</script>
+</html>
