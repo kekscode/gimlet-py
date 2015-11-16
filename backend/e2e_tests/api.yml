@@ -1,0 +1,94 @@
+---
+- config:
+  - testset: "Demonstrate the Blog API"
+
+- test:
+  - name: "Check endpoint availability"
+  - url: "/api/v1/blog"
+  - headers: {'Content-Type': 'application/json'}
+  - expected_status: [200]
+  - validators:
+    - compare: {jsonpath_mini: 'falconHome',  expected: 'http://falconframework.org/'}
+    - compare: {jsonpath_mini: 'falconDocs',  expected: 'http://falcon.readthedocs.org/'}
+
+- test:
+  - name: "Adding article about a photo camera"
+  - url: "/api/v1/blog/article/create"
+  - method: "POST"
+  - headers: {'Content-Type': 'application/json'}
+  - body: '{"title": "Sony Alpha 7 II im Test", "subtitle": "Fast ins Schwarze getroffen", "body": "Hier steht der Artikeltext"}'
+  - expected_status: [200]
+
+- test:
+  - name: "Adding article about drones"
+  - url: "/api/v1/blog/article/create"
+  - method: "POST"
+  - headers: {'Content-Type': 'application/json'}
+  - body: '{"title": "Lieferprobleme", "subtitle": "Drogendrohne zerschellt an Riesendonut", "body": "Hier steht der Artikeltext"}'
+  - expected_status: [200]
+
+- test:
+  - name: "Adding article about mars rover"
+  - url: "/api/v1/blog/article/create"
+  - method: "POST"
+  - headers: {'Content-Type': 'application/json'}
+  - body: '{"title": "Hubschrappschrapp", "subtitle": "Nasa will Mars-Rover mit Helikopter ausstatten", "body": "Hier steht der Artikeltext"}'
+  - expected_status: [200]
+
+- test:
+  - name: "Get first 3 articles and check content"
+  - url: "/api/v1/blog/articles"
+  - headers: {'Content-Type': 'application/json'}
+  - expected_status: [200]
+  - validators: # operator is applied as: <actual> <operator> <expected>
+    - compare: {jsonpath_mini: "0.title",     comparator: "contains", expected: "Alpha 7 II"}
+    - compare: {jsonpath_mini: "1.title",     comparator: "contains", expected: "Lieferprobleme"}
+    - compare: {jsonpath_mini: "2.title",     comparator: "contains", expected: "Hubschrappschrapp"}
+    - compare: {jsonpath_mini: "0.subtitle",  comparator: "contains", expected: "Fast ins Schwarze"}
+    - compare: {jsonpath_mini: "1.subtitle",  comparator: "contains", expected: "Drogendrohne"}
+    - compare: {jsonpath_mini: "2.subtitle",  comparator: "contains", expected: "Mars-Rover"}
+    - compare: {jsonpath_mini: "0.body",      comparator: "contains", expected: "Hier steht"}
+    - compare: {jsonpath_mini: "1.body",      comparator: "contains", expected: "der"}
+    - compare: {jsonpath_mini: "2.body",      comparator: "contains", expected: "Artikeltext"}
+  - extract_binds:
+    # We save article ids for later:
+    - 'id0': {'jsonpath_mini': '0.id'}
+    - 'id1': {'jsonpath_mini': '1.id'}
+    - 'id2': {'jsonpath_mini': '2.id'}
+
+- test:
+  - name: "Modifying an article"
+  - url: { template: "/api/v1/blog/article/$id0" }  # Here we use the id we saved before in a template
+  - method: "PUT"
+  - headers: {'Content-Type': 'application/json'}
+  - body: '{"title": "Fujifilm X-T1 im Test", "subtitle": "Gute Bilder bleiben", "body": "Hier steht der modifizierte Artikeltext"}'
+  - expected_status: [200]
+
+- test:
+  - name: "Modifying an article"
+  - url: { template: "/api/v1/blog/article/$id0" }
+  - method: "PUT"
+  - headers: {'Content-Type': 'application/json'}
+  - body: '{"title": "Fujifilm X-T1 im Test", "subtitle": "Gute Bilder bleiben", "body": "Hier steht der modifizierte Artikeltext"}'
+  - expected_status: [200]
+
+- test:
+  - name: "Delete first article"
+  - url: { template: "/api/v1/blog/article/$id0" }
+  - method: "DELETE"
+  - headers: {'Content-Type': 'application/json'}
+  - expected_status: [200]
+
+- test:
+  - name: "Delete second article"
+  - url: { template: "/api/v1/blog/article/$id1" }
+  - method: "DELETE"
+  - headers: {'Content-Type': 'application/json'}
+  - expected_status: [200]
+
+- test:
+  - name: "Delete third article"
+  - url: { template: "/api/v1/blog/article/$id2" }
+  - method: "DELETE"
+  - headers: {'Content-Type': 'application/json'}
+  - expected_status: [200]
