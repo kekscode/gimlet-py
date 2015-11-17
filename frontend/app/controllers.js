@@ -15,5 +15,5 @@ AppControllers.controller('MainCtrl', function ($scope, GimletArticles) {
   GimletArticles.query(function(response) {
     // Assign the response INSIDE the callback
     $scope.data.articles = response;
-});
+  });
 });

@@ -16,7 +16,7 @@
   - url: "/api/v1/blog/article/create"
   - method: "POST"
   - headers: {'Content-Type': 'application/json'}
-  - body: '{"title": "Sony Alpha 7 II im Test", "subtitle": "Fast ins Schwarze getroffen", "body": "Hier steht der Artikeltext"}'
+  - body: '{"title": "Sony Alpha 7 II im Test", "subtitle": "Fast ins Schwarze getroffen", "body": "Medical diabetes quanitfied self disinfection anesthetics red cross quarantine pain saving lives. Support chemicals prevention breakthrough mobile health pregnancy. Smart assistent insulin infectious desease pregnancy prevention arms instructions. Trauma medicare prevention X-ray intensive care radiology genetic arms scientific analyze emergency enzymes awareness paraplegic."}'
   - expected_status: [200]
 
 - test:
@@ -24,7 +24,7 @@
   - url: "/api/v1/blog/article/create"
   - method: "POST"
   - headers: {'Content-Type': 'application/json'}
-  - body: '{"title": "Lieferprobleme", "subtitle": "Drogendrohne zerschellt an Riesendonut", "body": "Hier steht der Artikeltext"}'
+  - body: '{"title": "Lieferprobleme", "subtitle": "Drogendrohne zerschellt an Riesendonut", "body": "Elegant jeans bows ribbon beautiful emphasis. Ensemble make up radical casual mode trend hippie. Original handbag illustration artificial textile fashion necessity pastel petticoat jacket edge zipper. Limited pastel consumer stock fashion modification tailor outfit outlet jacket photography mode apparel."}'
   - expected_status: [200]
 
 - test:
@@ -32,7 +32,7 @@
   - url: "/api/v1/blog/article/create"
   - method: "POST"
   - headers: {'Content-Type': 'application/json'}
-  - body: '{"title": "Hubschrappschrapp", "subtitle": "Nasa will Mars-Rover mit Helikopter ausstatten", "body": "Hier steht der Artikeltext"}'
+  - body: '{"title": "Hubschrappschrapp", "subtitle": "Nasa will Mars-Rover mit Helikopter ausstatten", "body": "Sales mass market strategy. Funding beta deployment strategy conversion analytics monetization scrum project business plan hackathon launch party mass market. Bootstrapping agile development business model canvas scrum project focus advisor partnership early adopters social proof analytics. Funding channels long tail customer A/B testing android."}'
   - expected_status: [200]
 
 - test:
@@ -47,9 +47,9 @@
     - compare: {jsonpath_mini: "0.subtitle",  comparator: "contains", expected: "Fast ins Schwarze"}
     - compare: {jsonpath_mini: "1.subtitle",  comparator: "contains", expected: "Drogendrohne"}
     - compare: {jsonpath_mini: "2.subtitle",  comparator: "contains", expected: "Mars-Rover"}
-    - compare: {jsonpath_mini: "0.body",      comparator: "contains", expected: "Hier steht"}
-    - compare: {jsonpath_mini: "1.body",      comparator: "contains", expected: "der"}
-    - compare: {jsonpath_mini: "2.body",      comparator: "contains", expected: "Artikeltext"}
+    - compare: {jsonpath_mini: "0.body",      comparator: "contains", expected: "Smart assistent insulin infectious desease pregnancy"}
+    - compare: {jsonpath_mini: "1.body",      comparator: "contains", expected: "fashion necessity pastel petticoat jacket edge zipper"}
+    - compare: {jsonpath_mini: "2.body",      comparator: "contains", expected: "early adopters social proof analytics"}
   - extract_binds:
     # We save article ids for later:
     - 'id0': {'jsonpath_mini': '0.id'}
