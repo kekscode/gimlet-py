@@ -1,8 +1,9 @@
-<h2>Philip Marlowe's Gimlet Blog</h2>
-<div>
+<div ng-controller="MainCtrl">
   <div ng-repeat="article in data.articles">
-    <h3><a class="btn btn-danger btn-xs" ng-click="deleteArticle(article)">Delete</a>&nbsp;{{article.title}}</h3>
-
+    <h3>
+      <a class="btn btn-danger btn-xs"
+          ng-click="functions.deleteArticle(article.id)">x</a>&nbsp;{{article.title}}
+    </h3>
     <h4 class="text-muted">{{article.subtitle}}</h4>
     <p class="small">{{article.timestamp | date:'dd-MM-yyyy'}} </p>
     <p>{{article.body}}</p>
