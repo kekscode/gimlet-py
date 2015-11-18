@@ -17,7 +17,8 @@ App.config(['$routeProvider', '$locationProvider',
             when('/', {
                 templateUrl: 'partials/main.html',
                 controller: 'MainCtrl'
-            });
-        //$locationProvider.html5Mode(false).hashPrefix('#');
-        $locationProvider.html5Mode(true).hashPrefix('!');
+            }).when('/create', {
+                templateUrl: 'partials/create.html',
+                controller: 'NewArticleCtrl'
+            })
     }]);
