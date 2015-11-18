@@ -8,7 +8,6 @@
 var App = angular.module('App', [
     'ngRoute',
     'AppControllers',
-    'AppServices'
 ]);
 
 // Configure App
