@@ -1,8 +1,37 @@
 <div ng-controller="NewArticleCtrl">
-  <label>Title: <input type="text" ng-model="title"/></label><br />
-  <label>Subtitle: <input type="text" ng-model="subtitle"/></label>
-  <label>Text: <input type="text" ng-model="body"/></label>
-</div>
-<div>
-  <p><a href="#/" class="btn btn-warning btn-xs">Back without saving</a></p>
+
+  <div>
+    <h3>Spread the word!</h3>
+  </div>
+
+  <div>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="titleEdit">Title:</label><br />
+        <input class="form-control" type="text" ng-model="title"/><br />
+      </div>
+      <div class="form-group">
+        <label for="subtitleEdit">Subtitle:</label><br />
+        <input class="form-control" type="text" ng-model="subtitle"/><br />
+      </div>
+      <div class="form-group">
+        <label for="bodyEdit">Text:</label><br />
+        <textarea class="form-control" rows="3" ng-model="body"/><br />
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <h3>Preview:</h3>
+    <div><p>Title: {{title}}</p></div>
+    <div><p>Subtitle: {{subtitle}}</p></div>
+    <div><p>Text: {{body}}</p></div>
+  </div>
+
+  <div>
+    <p><a href="#/" class="btn btn-danger">
+      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+      Back without saving</a></p>
+  </div>
+
 </div>
