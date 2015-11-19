@@ -6,7 +6,7 @@
 
 var AppControllers = angular.module('AppControllers', []);
 
-AppControllers.controller('MainCtrl', function ($scope, $location, $http, $window, cfg) {
+AppControllers.controller('MainCtrl', function ($scope, $route, $location, $http, cfg) {
   // Instantiate objects to store your scope data in (a good practice)
   $scope.data = {};
   $scope.functions = {};
@@ -23,14 +23,14 @@ AppControllers.controller('MainCtrl', function ($scope, $location, $http, $windo
   $scope.functions.deleteArticle = function(articleID) {
     $http.delete(cfg.articleResource + "/" + articleID)
     .then(function(response){
-      $window.location.reload(); // TODO: Omit full reload somehow
+      $route.reload(); // reload articles
     }, function(response){
       console.log("fail!" + response)
     });
   }
 });
 
-AppControllers.controller('NewArticleCtrl', function($scope, $http, cfg) {
+AppControllers.controller('NewArticleCtrl', function($scope, $route, $http, cfg) {
   $scope.functions = {};
   $scope.functions.createArticle = function(articleID) {
     $scope.blogpost = {};
@@ -41,7 +41,7 @@ AppControllers.controller('NewArticleCtrl', function($scope, $http, cfg) {
 
     $http.post(cfg.articleResource + "/create", $scope.blogpost)
     .then(function(response) {
-      $window.location.reload(); // TODO: Omit full reload somehow
+      $route.reload()
     }, function(response){
       console.log("fail!" + response)
     });
