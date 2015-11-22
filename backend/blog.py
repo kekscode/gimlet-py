@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 # coding=utf-8
 
 """
@@ -89,4 +89,3 @@ class BlogDB(object):
         for idx, post in enumerate(self.content['postings']):
             if post['id'] == article_id:
                 self.content['postings'].pop(idx)
-

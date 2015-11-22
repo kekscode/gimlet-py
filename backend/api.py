@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 # coding=utf-8
 
 import blog
@@ -46,7 +46,10 @@ class Article(object):
 
     def on_put(self, req, resp, article_uuid):
         """Update an article with url params using PUT"""
-        req_body = json.loads(req.stream.read())
+
+        # .decode() seems mandantory when running this in python3
+        # See: http://stackoverflow.com/questions/6862770/python-3-let-json-object-accept-bytes-or-let-urlopen-output-strings
+        req_body = json.loads(req.stream.read().decode('utf-8'))
         title = req_body['title']
         subtitle = req_body['subtitle']
         body = req_body['body']
@@ -69,7 +72,7 @@ class CreateArticle(object):
     """
     def on_post(self, req, resp):
         """Creates a new article using POST"""
-        req_body = json.loads(req.stream.read())
+        req_body = json.loads(req.stream.read().decode('utf-8'))
         title = req_body['title']
         subtitle = req_body['subtitle']
         body = req_body['body']
