@@ -1,0 +1,11 @@
+---
+backend:
+    build: ./backend/
+    ports:
+      - "5555:80"
+    restart: always
+frontend:
+    build: ./frontend/
+    ports:
+      - "9090:80"
+    restart: always
